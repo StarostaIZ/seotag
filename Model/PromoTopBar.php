@@ -33,4 +33,5 @@ class PromoTopBar
      * @var string
      */
     public $link;
+
 }

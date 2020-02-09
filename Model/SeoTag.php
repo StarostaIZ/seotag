@@ -1,6 +1,5 @@
 <?php
 
-
 class SeoTag
 {
     /**
@@ -26,7 +25,7 @@ class SeoTag
     /**
      * @var bool
      */
-    public $set_canonical;
+    public $set_canonical = false;
 
     /**
      * @var string
@@ -36,7 +35,7 @@ class SeoTag
     /**
      * @var string
      */
-    public $body_descpription;
+    public $body_description;
 
     /**
      * @var string
@@ -45,12 +44,16 @@ class SeoTag
 
     public function __construct(string $parameters = '')
     {
-        if(isset($parameters)){
+        if(!empty($parameters)){
             $conn = DatabaseConnSingleton::getInstance();
-            $seo = $conn->findSeoTagByParams($parameters);
-            foreach (get_object_vars($seo) as $key => $value){
-                $this->{$key} = $value;
-            }
+			try {
+				$seo = $conn->findSeoTagByParams($parameters);
+				foreach (get_object_vars($seo) as $key => $value){
+					$this->{$key} = $value;
+				}
+			} catch (SeoTagNotExistException $e) {
+			}
+
         }
 
     }
@@ -110,23 +113,25 @@ class SeoTag
     /**
      * @return string
      */
-    public function getBodyDescpription(): string
+    public function getBodyDescription(): string
     {
-        return $this->body_descpription;
+        return $this->body_description;
     }
 
     /**
-     * @param string $body_descpription
+     * @param string $body_description
      */
-    public function setBodyDescpription(string $body_descpription): void
+    public function setBodyDescription(string $body_description): void
     {
-        $this->body_descpription = $body_descpription;
+        $this->body_description = $body_description;
     }
 
     public function setCanonicalOnMyself()
     {
         $this->set_canonical = true;
     }
+
+
 
 
 

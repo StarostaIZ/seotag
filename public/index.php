@@ -18,14 +18,19 @@
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="seo-tag.php">Seo Tags</a>
+                    <a href="seo-tag.php">Seo tagi</a>
                 </li>
                 <li>
-                    <a href="#">Promo Top</a>
+                    <a href="seo-tag-add.php">Dodaj tag</a>
+                </li>
+                <li>
+                    <a href="promo-top-bar.php">Promocje</a>
+                </li>
+                <li>
+                    <a href="promo-top-bar-add.php">Dodaj promo</a>
                 </li>
             </ul>
         </nav>
-
     </div>
     <div class="container">
 
